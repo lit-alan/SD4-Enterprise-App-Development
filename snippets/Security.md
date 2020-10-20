@@ -143,7 +143,7 @@
 
                 statement = conn.createStatement();
 
-                String sql = "SELECT * from authors";
+                String sql = "SELECT * from authors ORDER BY AuthorID ASC";
 
                 ResultSet rs = statement.executeQuery(sql);
 
