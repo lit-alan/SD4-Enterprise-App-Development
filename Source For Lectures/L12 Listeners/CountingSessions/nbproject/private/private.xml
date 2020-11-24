@@ -3,9 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/alan.ryan/Dropbox/Course%20Notes/SD4%20DOBS/Archive/2014-2015/MVC/Advanced%20Servlet%20Techniques/UsingListeners/CountingSessions/src/java/listeners/SessionCounter.java</file>
-            <file>file:/C:/Users/alan.ryan/Dropbox/Course%20Notes/SD4%20DOBS/Archive/2014-2015/MVC/Advanced%20Servlet%20Techniques/UsingListeners/CountingSessions/src/java/servlet/HandleSession.java</file>
-            <file>file:/C:/Users/alan.ryan/Dropbox/Course%20Notes/SD4%20DOBS/Archive/2014-2015/MVC/Advanced%20Servlet%20Techniques/UsingListeners/CountingSessions/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/alan.ryan/Dropbox/Course%20Notes/Source%20on%20Github/sd4-enterprise-development/Source%20For%20Lectures/L12%20Listeners/CountingSessions/src/java/servlet/HandleSession.java</file>
+            <file>file:/C:/Users/alan.ryan/Dropbox/Course%20Notes/Source%20on%20Github/sd4-enterprise-development/Source%20For%20Lectures/L12%20Listeners/CountingSessions/web/index.jsp</file>
         </group>
     </open-files>
 </project-private>
