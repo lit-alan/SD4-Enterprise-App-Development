@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="EmailAddressApp_WithErrorPages:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>EmailAddressApp_WithErrorPages</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="EmailAddressApp_WithErrorPages-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="EmailAddressApp_WithErrorPages:war exploded" />
+    </root>
+  </artifact>
+</component>
