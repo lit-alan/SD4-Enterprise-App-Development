@@ -16,7 +16,7 @@ _The strucure of my project is a follows; with seperate packages for the Control
 
 _The desired output is as follows: for every record displayed in the HTML table, highlight in red each cell where the YearPublished is 2019._.
 
-![](/images/structure.JPG)
+![](/images/table.JPG)
 
 ## Snippets
 
