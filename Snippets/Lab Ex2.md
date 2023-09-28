@@ -283,7 +283,10 @@ public class Title {
 
 ```java
 
-  public static void connectToDB() { // your code here }  
+  public static void connectToDB() {
+      Class.forName("com.mysql.cj.jdbc.Driver"); //you will need this line of code to manually load the MySQL driver
+      // the rest of your code to connect to the DB goes here
+}  
 
   public static void disconnectFromDB() { // your code here }
 
