@@ -9,14 +9,22 @@
 4. Add a class to your project called [**Title**](#titlejava). This class will act as an entity class (aka a domain class) for your application and will model the structure of the **Titles** table in the DB.
 
 5. Add a class to your project called **TitleDB**. This class will contain three methods. One to connect to the DB, another to disconnect from it and another method to retrieve all records from the _titles_ table. These methods will be called from within your **Servlet**. Check out the proposed signatures for these methods [here](#titledbjava). _These methods are static so they can be invoked using the following systax ClassName.methodName()_
+   
+6. Add a **Servlet** to your project. The job of the Servlet is to:
+   
+   - Connect to the database by calling the _connectToDB()_ method in the **TitleDB** class.
+   
+   - Call the _getAlltitles()_ method in the **TitleDB** and get a **List** of **Title** objects.
+
+   - Put this **List** into the request and forward the user to the next page (the one to display all titles).
+
+8. Add a JSP to your project. Using a combination of [JSTL and EL](https://lit-main-mdl-euwest1.s3.eu-west-1.amazonaws.com/c2/04/c20429502559a6c9ead8409f8f289a04ee656454?response-content-disposition=inline%3B%20filename%3D%22EL%20and%20JSTL%20for%20MVC%20Compliant%20Apps.pdf%22&response-content-type=application%2Fpdf&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKv%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCWV1LXdlc3QtMSJGMEQCIEfVK9%2B9mKc4boWWXqtzYsRzEgOTpzldt6TI5ntASLk8AiAHZ6YZqOrfswYuURCjbahV%2BUKtEst%2B5t3bdgafQZDEMyryAwik%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAAaDDQ0OTc1OTgyNDIxNSIMEx81%2FJH6w2p3nyNZKsYDA%2BY0Tk%2FrDskFVQhchyzUG%2BK4b%2FT2sEpbRK6Fp7fsRitOziS1Zuwf3wxXV0qR4K7mSX%2BrvFSVL9Sp6uSyO6abNebIy0jna0VQ0BOCwSIM5rMJXXoDmYpe0GlHA51SuyeQy%2Bnd%2FI%2B9n%2FRMjHbktLmXrYXg%2Bl0jvxg7GfhDLRljNtV88NdRMNWpWBS5frTy5545U73ZPfZGWeq05hh6%2FIos%2B8Cxlp7yvpAzl%2Fylf2AAQrfqEVpVotFQAdOO%2BRTDS30mVOyrVtOMXwWkC%2Ba8gho69130Jgo%2B6yB3%2FQDqPYSroy%2BjQSrHX7z44pO20OTjSh5wdU0jkWnGNcIt8ENdRHzh7prIzYadUWG8zSxo9R%2Fl8Vsqb7hNO2L7SRjF3f0OhojNAw56Ap%2FYkBCeuvMjeSdAjpmQtZGYWqM2uKUxmWf6M3B4y9uODjElwyc%2BWakj6qXWEgxBl%2FkHtZe%2Bhv2uYOEi1m1ibyfE1Nc6wEk68bqshSXTMx4IZGnLALpF4IvZxtdjEIfCe4toTEuW%2B22sE7B2jd2Fu3V6FNKW3eSmBPyoJQHbXP1R%2B%2B12IN1dutpoiIuvhMuJ3%2FKwzIoQLmucP%2BuMiTMKnGCPBTC9ttWoBjqmAdRU2bqV8g57YSds3a4j0EweFqg8rtA6%2BydlzMI5lF0A04RIKnsmxOAwGM4BY9fKpBUBpfoTSOnKpX1AAAYIB7o4jTLngu9Cv1so%2BoSRh8mehxMx%2Fuj%2B6YfjXe9A1D9bvEiU%2FePs4qRaXbOfzt6%2FRZ9ZZgmin%2BY1Cs%2FbO%2B507DJkmZ7ciozZADlj%2Bp%2BprqH3A0AYyNoyO66EomSXBR%2Bs25cCa8T6TM0%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAWRN6GJFLUIB5KE7H%2F20230928%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20230928T113951Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3549&X-Amz-Signature=94208dc603e7daf810068c2c8cbdd878c54b66cc6e6522414c82e76f2b3ed1e2), display a HTML table that shows all records from the titles table in the database as follows. Remember to highlight in red each cell where the YearPublished is 2019.
+
+![](/images/table.JPG)
 
 _The strucure of my project is a follows; with seperate packages for the Controller (Servlet) and the Model (Title and TitleDB)_.
 
 ![](/images/structure.JPG)
-
-_The desired output is as follows: for every record displayed in the HTML table, highlight in red each cell where the YearPublished is 2019._.
-
-![](/images/table.JPG)
 
 ## Snippets
 
