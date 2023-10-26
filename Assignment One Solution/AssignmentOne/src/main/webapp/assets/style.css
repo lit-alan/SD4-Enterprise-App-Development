@@ -1,0 +1,40 @@
+/* ... (previous CSS styles) */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    vertical-align: top; /* Add this to align the content at the top of cells */
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0; /* Remove margin for the list to make it display inline */
+}
+.review-item {
+    display: block;
+    margin-bottom: 10px; /* Add spacing between reviews */
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+.review-item strong {
+    font-weight: bold;
+}

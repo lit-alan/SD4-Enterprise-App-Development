@@ -22,7 +22,7 @@
 
             <c:forEach items="${list}" var="anAccount">
                 <tr>
-                    <td><a href="AccountDrillDown?id=${anAccount.accountNumber}">${anAccount.accountNumber}</a></td>
+                    <td><a href="AccountDrillDown?id=${anAccount.accountNumber}&fNAme=${anAccount.firstName}">${anAccount.accountNumber}</a></td>
                     <td>${anAccount.firstName}</td>
                     <td>${anAccount.lastName}</td>
                     <td>${anAccount.sortCode}</td>

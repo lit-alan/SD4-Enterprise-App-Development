@@ -19,6 +19,7 @@ public class AccountDrillDown extends HttpServlet {
             int accountID = 0;
             try {
                 accountID = Integer.parseInt(request.getParameter("id"));
+                String fNAme = request.getParameter("fNAme");
             } catch (Exception ex) {
                 address = "/UnknownCustomer.jsp";
             }
