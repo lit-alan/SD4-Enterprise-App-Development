@@ -8,7 +8,7 @@
     <body>
         <h3>This is our top SECRET content, I bet you are glad you can see this</h3>
         <br>
-        <a href="../index__.jsp">Admin Home Page</a>
+        <a href="../index_.jsp">Admin Home Page</a>
         <br>
          <a href="/ShiroSoln/logout">Log Out</a>
     </body>
