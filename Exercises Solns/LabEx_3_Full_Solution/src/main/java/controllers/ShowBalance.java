@@ -8,6 +8,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.Date;
+import java.util.Locale;
 
 @WebServlet(name = "ShowBalance", value = "/ShowBalance")
 public class ShowBalance extends HttpServlet {
@@ -43,6 +44,9 @@ public class ShowBalance extends HttpServlet {
                     Cookie c = new Cookie(String.valueOf(customer.getAccountNumber()), customer.getFirstName() + customer.getLastName());
                     c.setMaxAge(60 * 60);
                     response.addCookie(c);
+
+                   
+
 
                 }
 
