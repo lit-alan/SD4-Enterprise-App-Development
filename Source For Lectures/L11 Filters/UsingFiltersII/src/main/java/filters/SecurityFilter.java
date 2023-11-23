@@ -24,7 +24,7 @@ public class SecurityFilter implements Filter {
         String hostsString = filterConfig.getInitParameter("allowedHosts");
 
         if (hostsString != null && !hostsString.trim().equals("") )
-            allowedHosts = hostsString.split("\n");
+            allowedHosts = hostsString.split(",");
     }//end init
 
     public void doFilter(ServletRequest request, ServletResponse response,
@@ -45,8 +45,11 @@ public class SecurityFilter implements Filter {
             }//end if
         }//end for
 
-        if (allowed)
+        if (allowed) {
+            filterConfig.getServletContext()
+                    .log("Attempted access for IP " + remoteAddress);
             chain.doFilter(request, response);
+        }
         else {
             filterConfig.getServletContext()
                     .log("Attempted access for unauthorised IP " + remoteAddress);
