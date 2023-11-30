@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="L13_Working_With_Requests_and_Responses:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>L13_Working_With_Requests_and_Responses</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="L13_Working_With_Requests_and_Responses-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="L13_Working_With_Requests_and_Responses:war exploded" />
+    </root>
+  </artifact>
+</component>
