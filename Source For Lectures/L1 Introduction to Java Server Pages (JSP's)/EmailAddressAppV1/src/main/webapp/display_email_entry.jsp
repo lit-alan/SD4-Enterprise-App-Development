@@ -1,5 +1,4 @@
-<%@ page import="business.User" %>
-<%@ page import="data.UserIO" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -9,20 +8,10 @@
     </head>
     <body>
 
-        
         <%
-
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String emailAddress = request.getParameter("emailAddress");
-
-        ServletContext sc = request.getServletContext();
-
-        String path = sc.getRealPath("/WEB-INF/EmailList.txt");
-
-        User user = new User(firstName, lastName, emailAddress);
-        
-        UserIO.add(user, path);
         
         %>
        
@@ -33,16 +22,16 @@
         <table cellspacing="5" cellpadding="5" border="1">
             <tr>
                 <td align="right"> First name: </td>
-                <td><%= user.getFirstName()%> </td>
+                <td><%= firstName %> </td>
             </tr>         
             <tr>
                 <td align="right"> Last name: </td>
-                <td><%= user.getLastName()%> </td>
+                <td><%= lastName %> </td>
             </tr>
             
             <tr>
                 <td align="right"> Email address: </td>
-                <td><%= user.getEmailAddress() %> </td>
+                <td><%= emailAddress %> </td>
             </tr>
         </table>
 
@@ -50,7 +39,7 @@
            button in your browser or the Return button shown <br>
            below. </p>
             
-        <form action="index.jsp" method="post">
+        <form action="join_email_list.html" method="post">
             <input type="submit" value="Return">
         </form>
 

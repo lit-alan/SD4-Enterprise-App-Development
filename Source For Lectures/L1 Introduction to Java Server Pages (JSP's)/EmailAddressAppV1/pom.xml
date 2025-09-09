@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>EmailAddressAppV2</artifactId>
+    <artifactId>EmailAddressAppV1</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>EmailAddressAppV2</name>
+    <name>EmailAddressAppV1</name>
     <packaging>war</packaging>
 
     <properties>

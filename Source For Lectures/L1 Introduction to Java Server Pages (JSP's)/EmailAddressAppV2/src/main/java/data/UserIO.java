@@ -1,7 +1,8 @@
-package src.java.data;
+package data;
 
 
-import src.java.business.User;
+import business.User;
+
 
 import java.io.*;
 

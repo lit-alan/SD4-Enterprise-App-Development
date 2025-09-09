@@ -1,4 +1,4 @@
-package src.java.business;
+package business;
 
 
 public class User {
