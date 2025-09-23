@@ -11,6 +11,8 @@
 
 _You can use the default versions for the JDK, Java, and Spring Boot._
 
+:point_right: _If MySQL is not installed on a student machine in the lab, you can use H2 instead. H2 is an im-memory database that is quick and easy to use and there is a guide to using it [here](instructions_for_using_H2.md). If you have access to MySQL/Workbench/PHPMyAdmin then ignore this_
+
 ### 2. Set Up the MySQL Database
 - Execute the following MySQL script to create a database called _jpa_example_ which contains three tables: `customers`, `products`, and `reviews`.
 
