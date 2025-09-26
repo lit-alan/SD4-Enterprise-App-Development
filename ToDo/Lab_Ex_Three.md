@@ -5,7 +5,7 @@
 
 
   
-### Remove all code from the `CustomerRepository` and replace it with the following:
+### 1. Remove all code from the `CustomerRepository` and replace it with the following:
 
 ```java
 @Repository
@@ -19,7 +19,7 @@ _`JpaRepository` in Spring Data is a generic interface that provides basic CRUD 
 
 _Run your application again,and it should run as before_
 
-### Amend the 'displayAllCustomers' Feature from Lab Ex 2.
+### 2. Amend the 'displayAllCustomers' Feature from Lab Ex 2.
 
 ![image](https://github.com/user-attachments/assets/b7efe0e3-6c70-4a56-9226-3e71604db5ab)
 
