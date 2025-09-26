@@ -184,13 +184,13 @@ If you are performing an update, you need to ensure that all the fields in the `
  * @return true if the customer was updated successfully, false if the customer was not found
  */
 public boolean updateCustomer(Customer customer) {
-    // Find the existing customer in the database by ID
+    //Find the existing customer in the database by ID
     Optional<Customer> existingCustomerOptional = customerRepository.findById(customer.getCustomerId());
 
     if (existingCustomerOptional.isPresent()) {
         Customer existingCustomer = existingCustomerOptional.get();
 
-        // Update the existing customer's details
+        //Update the existing customer's details
         existingCustomer.setFirstName(customer.getFirstName());
         existingCustomer.setLastName(customer.getLastName());
         existingCustomer.setEmail(customer.getEmail());
@@ -198,11 +198,11 @@ public boolean updateCustomer(Customer customer) {
         existingCustomer.setAddress(customer.getAddress());
         existingCustomer.setCity(customer.getCity());
 
-        // Save the updated customer back to the database
+        //Save the updated customer back to the database
         customerRepository.save(existingCustomer);
         return true; // Indicate success
     } else {
-        // Handle the case when the customer does not exist
+        //Handle the case when the customer does not exist
         return false; // Indicate failure (customer not found)
     }
 }
