@@ -1,5 +1,10 @@
 ## Lab Exercise Three. Week :four:
 
+
+### You must have completed [Lab Ex 2](Lab_Ex_Two.md) before attemtping this exercise.  
+
+
+  
 ### Remove all code from the `CustomerRepository` and replace it with the following:
 
 ```java
@@ -38,7 +43,7 @@ _Ensure that each `customerID` appears as a [link](https://www.thymeleaf.org/doc
 
 _In the drill down page, for each `review` that the customer has made; display the the `name` of the product, the review `rating` and the `reviewText`_
 
-If end user enters an invalid customer id (via the url): `customers/drilldown/333333` for example, the controller should be redirect to `/customers`
+If end user enters an invalid customer id (via the url): `customers/drilldown/333333` for example, the controller should redirect to `/customers`
 
 
 
