@@ -14,10 +14,10 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 }
 
 ```
-_`JpaRepository` in Spring Data is a generic interface that provides basic CRUD (Create, Read, Update, Delete) operations (out of the box) for a specific entity type without requiring boilerplate code (that you just removed from the `CustomerREpository`. It also provides pagination (as well as some other features). Pagination, allows you to handle lrge datasets efficiently - reducing memory load, speeding up queries, and improving user experience by showing results in smaller, manageable chunks. We will look at pagination later_  
+_`JpaRepository` in Spring Data is a generic interface that provides basic CRUD (Create, Read, Update, Delete) operations (out of the box) for a specific entity type without requiring boilerplate code (that you just removed from the `CustomerREpository`. It also provides pagination (as well as some other features). Pagination, allows you to handle lrge datasets efficiently - reducing memory load, speeding up queries, and improving user experience by showing results in smaller, manageable chunks. We will look at pagination later._  
 
 
-_Run your application again,and it should run as before_
+:point_right: _Run your application again, and it should run as before_
 
 ### 2. Amend the 'displayAllCustomers' Feature from Lab Ex 2.
 
