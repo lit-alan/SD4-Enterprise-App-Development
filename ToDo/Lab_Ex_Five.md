@@ -71,9 +71,10 @@ The flow is as follows:
 
 
   
-<img width="948" height="46" alt="image" src="https://github.com/user-attachments/assets/8e9c961e-383f-4139-91f1-c226ba2d1048" />  
+<img width="816" height="60" alt="image" src="https://github.com/user-attachments/assets/e45b0d81-8274-4eb2-8ed8-61cb83c44849" />
 
-_A check of the reviews table will confirm that the review has been saved (notice how it has saved the customer and product ID's_
+
+_A check of the reviews table will confirm that the review has been saved (notice how it has saved the customer and product ID's)_
 
 
 ### How Best to Approach This?
