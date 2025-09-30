@@ -41,14 +41,20 @@ private List<Review> reviewList;
 _Without setting the Cascade type, you will not be permitted to delete customers who have left a review(s) and the application will likely crash. This issue is due to a foreign key constraint in the `reviews` table that references the `customers` table. This means you cannot delete a customer if they have associated reviews because the reviews depend on the existence of that customer._
 <br><br>
   
-Once you have the delete feature fully working, consider using a Javascript alert to ask the user the confirm their intention to delete a record. For example:  
-
 ![image](https://github.com/user-attachments/assets/16a24a41-751a-498b-9000-e6a91fef3a38)
 
+The customerId needs to be encoded into the `delete` link/URL. Using Thymeleaf this is relatively straightforward.
+
+```html
+<a th:href="@{/customers/delete/{id}(id=${customer.customerId})}"
+          th:onclick="'return confirm(\'Are you sure you want to delete this customer?\');'">Delete</a> |
+```
+
+_As well as encoding the URL with the `customerId`, I am also using some Javascript to prompt the user to confirm their intention to delete a customer_
 
 <br><br>
 ### Update a Customer
-When the update link for a specific customer is clicked, the end user will be redirected to a form that allows them to edit the customer's details. The details of the selected customer will be pre-populated in the form fields. After a successful edit, the user will be redirected to `/customers`, where a flash attribute will convey a message indicating that the update was successful. For example: <br>.
+When the update link for a specific customer is clicked (the link will need to be encoded with the `customerId`), the end user will be redirected to a form that allows them to edit the customer's details. The details of the selected customer will be pre-populated in the form fields. After a successful edit, the user will be redirected to `/customers`, where a flash attribute will convey a message indicating that the update was successful. For example: <br>.
 
 ![image](https://github.com/user-attachments/assets/6bdd659d-697a-4764-9cde-fcd1f91a0229)
 
