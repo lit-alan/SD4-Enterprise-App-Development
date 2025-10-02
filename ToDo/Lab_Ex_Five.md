@@ -388,7 +388,7 @@ What do you need to do?
     }
 ```
 
-- Either replace the endpoint in the customer controller that displays all customers with the following.
+- Replace the endpoint in the customer controller that displays all customers with the following.
 
 ```java
  @GetMapping({"", "/"})
