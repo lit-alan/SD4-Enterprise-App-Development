@@ -413,7 +413,7 @@ public String getAllCustomers(
 }
 
 ```
-- Enable the column headers so that they are clickable for sorting. EG:
+- In the view, enable the column headers so that they are clickable for sorting. EG:
   
 ```html
 <th>
