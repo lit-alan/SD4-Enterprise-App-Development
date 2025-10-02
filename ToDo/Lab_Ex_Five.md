@@ -333,10 +333,126 @@ reviewText="Nice product!"
 
 ----
 
-4. Assume that a new business requirement has been introduced: only customers who have not yet submitted a review are permitted to leave one. Firstly, Update the `displayAllCustomers` template so that the “Add a Review” link is displayed only for customers who have not yet submitted any reviews.
+#### 4. Regulate Review Submission.
+Assume that a new business requirement has been introduced: only customers who have not yet submitted a review are permitted to leave one. Firstly, Update the `displayAllCustomers` template so that the “Add a Review” link is displayed only for customers who have not yet submitted any reviews.
 
 
  <img width="1322" height="633" alt="image" src="https://github.com/user-attachments/assets/21fafaa5-cce8-447a-857a-c6c24e5f5cb5" />  
 
  Add a check in the controller so that if a customer who has already left a review (e.g. Customer 1) tries to navigate directly to  
  `/reviews/new/1`, they are prevented from leaving another review. Even though the “Add a Review” link is hidden for such customers, a user could still attempt to access the form directly by typing the URL into the browser (URL hacking). To handle this, ensure the controller redirects the user back to the home page (or another safe page) instead of displaying the review form.
+
+
+#### 5. Add Pagination and Sorting.
+
+Add pagination to the `displayAllCustomers` template so that you can display 12 customers at a time (per page). Consult [Lecture 6 on JPQL, Derived Queries, Paging and Sorting for more details](https://lit-main-mdl-euwest1.s3.eu-west-1.amazonaws.com/98/5c/985c7986733c5dc6541ee47208e83d47f21a8158?response-content-disposition=inline%3B%20filename%3D%22JPQL%20and%20Derived%20Query%20Methods.pdf%22&response-content-type=application%2Fpdf&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWRN6GJFLXROXF4PK%2F20251002%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20251002T183001Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3599&X-Amz-Signature=428ecbe93ad3a1d19fcf4b9cd26fe76184c694219c70ca69d717335c2ca5aaf1)  
+
+Also modify the table headers in the `displayAllCustomers` template  to be clickable for sorting. Add pagination controls below the table.    
+
+<img width="1176" height="621" alt="image" src="https://github.com/user-attachments/assets/b166052b-29a2-47a1-b4fb-68ceca327d80" />
+
+
+_I implemented pagination slightly differently here than I did in the lecture. Either approach is acceptable._
+
+What do you need to do? 
+
+- No change is required in the repository as JpaRepository already extends PagingAndSortingRepository, so you don’t need to add anything special for paging/sorting here.
+- Add the following to the `CustomerService`
+  
+```java
+/**
+     * Retrieves a paginated and sorted list of customers from the repository.
+     *
+     * <p>This method uses Spring Data JPA's {@link PageRequest} and {@link Sort} to
+     * build a {@link Pageable} object that defines both the page size and the sorting order.
+     * It delegates to the repository's {@code findAll(Pageable pageable)} method to execute
+     * the query with pagination and sorting applied at the database level.</p>
+     *
+     * @param page         the zero-based page index (0 = first page)
+     * @param size         the number of records per page
+     * @param sortField    the entity field by which the results should be sorted (e.g. "lastName")
+     * @param sortDirection the direction of sorting ("asc" for ascending, "desc" for descending)
+     * @return a {@link Page} of {@link Customer} entities containing the requested slice of data
+     */
+    public Page<Customer> getCustomersPagedAndSorted(int page, int size, String sortField, String sortDirection) {
+        //check if the sorting should be asc or desc
+        Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name())
+                ? Sort.by(sortField).ascending()    
+                : Sort.by(sortField).descending();  
+
+        //create a Pageable object using the page index, page size, and sorting config
+        Pageable pageable = PageRequest.of(page, size, sort);
+
+        //query the repo with pagination and sorting applied
+        return customerRepository.findAll(pageable);
+    }
+```
+
+- Either replace the endpoint in the customer controller that displays all customers with the following.
+
+```java
+ @GetMapping({"", "/"})
+public String getAllCustomers(
+        @RequestParam(defaultValue = "0") int page,
+        @RequestParam(defaultValue = "12") int size,
+        @RequestParam(defaultValue = "customerId") String sortField,
+        @RequestParam(defaultValue = "asc") String sortDir,
+        Model model) {
+
+    Page<Customer> customerPage = customerService.getCustomersPagedAndSorted(page, size, sortField, sortDir);
+
+    model.addAttribute("customerList", customerPage.getContent());
+    model.addAttribute("currentPage", page);
+    model.addAttribute("totalPages", customerPage.getTotalPages());
+    model.addAttribute("totalItems", customerPage.getTotalElements());
+    model.addAttribute("sortField", sortField);
+    model.addAttribute("sortDir", sortDir);
+    model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
+
+    return "displayAllCustomers";
+}
+
+```
+- Enable the column headers so that they are clickable for sorting. EG:
+  
+```html
+<th>
+   <a th:href="@{/customers(page=${currentPage}, size=5, sortField='customerId', sortDir=${reverseSortDir})}">
+        Customer ID
+   </a>
+ </th>
+```
+_enable the other headers too if you wish_
+
+- Add pagination controls under the table.
+  
+```html
+
+<!-- Pagination -->
+
+<!-- Pagination controls -->
+<div>
+    <span th:text="'Page ' + ${currentPage + 1} + ' of ' + ${totalPages}"></span>
+</div>
+
+<div>
+     <!-- just some inline CSS styling for the pagination, take it out to see what it does!-->
+    <ul style="list-style:none; display:flex; gap:10px;">
+        <li th:if="${currentPage > 0}">
+            <a th:href="@{/customers(page=${currentPage - 1}, sortField=${sortField}, sortDir=${sortDir})}">Prev</a>
+        </li>
+
+        <li th:each="i : ${#numbers.sequence(0, totalPages-1)}">
+            <a th:href="@{/customers(page=${i}, sortField=${sortField}, sortDir=${sortDir})}"
+               th:text="${i + 1}"
+               th:classappend="${i == currentPage} ? 'active' : ''"></a>
+        </li>
+
+        <li th:if="${currentPage < totalPages - 1}">
+            <a th:href="@{/customers(page=${currentPage + 1}, sortField=${sortField}, sortDir=${sortDir})}">Next</a>
+        </li>
+    </ul>
+</div>
+```
+
+- Could you add a “First” and “Last” button to jump directly to the first/last page?
