@@ -455,4 +455,4 @@ _enable the other headers too if you wish_
 </div>
 ```
 
-- Could you add a “First” and “Last” button to jump directly to the first/last page?
+- Could you add a “First” and “Last” link to jump directly to the first/last page?
