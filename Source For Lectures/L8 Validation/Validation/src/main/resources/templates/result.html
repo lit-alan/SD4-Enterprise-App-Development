@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Submission Result</title>
+    <style>
+        body { font-family: system-ui, sans-serif; margin: 2rem; }
+        table { border-collapse: collapse; margin-top: 1rem; }
+        th, td { border: 1px solid #aaa; padding: 6px 10px; text-align: left; }
+    </style>
+</head>
+<body>
+<h1>Server Received the Following Data</h1>
+<table>
+    <tr><th>Full Name</th><td th:text="${fullName}"></td></tr>
+    <tr><th>Email</th><td th:text="${email}"></td></tr>
+    <tr><th>Age</th><td th:text="${age}"></td></tr>
+    <tr><th>Phone</th><td th:text="${phone}"></td></tr>
+    <tr><th>Password</th><td th:text="${password}"></td></tr>
+    <tr><th>Confirm Password</th><td th:text="${confirmPassword}"></td></tr>
+    <tr><th>Notes</th><td th:text="${notes}"></td></tr>
+</table>
+
+<p><a href="/">Back to form</a></p>
+</body>
+</html>

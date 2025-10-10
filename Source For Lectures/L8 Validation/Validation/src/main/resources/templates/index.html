@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Customer Signup (Client-side validation demo)</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+        body { font-family: system-ui, sans-serif; margin: 2rem; }
+        label { display:block; margin-top: 0.8rem; }
+        input, textarea {
+            display:block;
+            margin-top: 0.3rem;
+            padding: 0.4rem;
+            width: 320px;
+        }
+        .error { color: darkred; font-size: 0.95rem; margin-top: 0.5rem; }
+        small { display:block; margin-top: 0.2rem; color: #444; }
+    </style>
+</head>
+<body>
+<h1>Customer Signup (Client-side validation demo)</h1>
+
+<form id="customerForm" action="/submit" method="post" novalidate>
+    <label>
+        Full name
+        <input name="fullName" type="text" required minlength="4" placeholder="e.g. Alice Smith" />
+    </label>
+
+    <label>
+        Email
+        <input name="email" type="email" required placeholder="email@example.com" />
+    </label>
+
+    <label>
+        Age
+        <input name="age" type="number" min="18" max="120" required />
+    </label>
+
+    <label>
+        Phone (Irish mobile)
+        <input name="phone" id="phone" type="tel"
+               required
+               placeholder="0871234567 or +353871234567"
+               aria-describedby="phoneHelp" />
+        <small id="phoneHelp">National: 08XXXXXXXX or international: +3538XXXXXXX (spaces/dashes allowed).</small>
+    </label>
+
+    <label>
+        Password
+        <input id="password" name="password" type="password" required minlength="8"
+               placeholder="Minimum 8 chars incl. a digit" />
+    </label>
+
+    <label>
+        Confirm password
+        <input id="confirmPassword" name="confirmPassword" type="password" required />
+    </label>
+
+    <label>
+        Notes
+        <textarea name="notes" maxlength="500" rows="4" required></textarea>
+    </label>
+
+    <div class="error" id="clientErrors" aria-live="polite"></div>
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+    (function () {
+        const form = document.getElementById('customerForm');
+        const clientErrors = document.getElementById('clientErrors');
+        const phoneInput = document.getElementById('phone');
+
+        function normalizePhone(v) {
+            return v ? v.replace(/[\s-]/g, '') : '';
+        }
+
+        function isValidIrishMobile(v) {
+            const s = normalizePhone(v);
+            //national form: 08 + 8 digits  => ^08\d{8}$
+            //international: +3538 + 7 digits => ^\+3538\d{7}$
+            return /^08\d{8}$/.test(s) || /^\+3538\d{7}$/.test(s);
+        }
+
+        function validatePasswordRules(pw) {
+            return /\d/.test(pw) && pw.length >= 8;
+        }
+
+        form.addEventListener('submit', e => {
+            clientErrors.textContent = '';
+            const fullName = (form.fullName.value || '').trim();
+            const email = (form.email.value || '').trim();
+            const ageRaw = (form.age.value || '').trim();
+            const age = ageRaw === '' ? NaN : Number(ageRaw);
+            const phone = (form.phone.value || '').trim();
+            const pw = (form.password.value || '');
+            const confirm = (form.confirmPassword.value || '');
+            const notes = (form.notes.value || '').trim();
+
+            const errors = [];
+
+            //Required-field checks (friendly UX messages)
+            if (!fullName) errors.push('Full name is required.');
+            if (!email) errors.push('Email is required.');
+            if (!ageRaw) errors.push('Age is required.');
+            if (!phone) errors.push('Phone is required.');
+            if (!pw) errors.push('Password is required.');
+            if (!confirm) errors.push('Confirm password is required.');
+            if (!notes) errors.push('Notes are required.');
+
+            //Business rules
+            if (fullName && fullName.length < 4) errors.push('Full name must be at least 4 characters.');
+            if (pw && !validatePasswordRules(pw)) errors.push('Password must be 8+ chars and include at least 1 digit.');
+            if (pw && confirm && pw !== confirm) errors.push('Passwords do not match.');
+            if (!Number.isNaN(age) && !(age >= 18 && age <= 120)) errors.push('Age must be between 18 and 120.');
+            if (phone && !isValidIrishMobile(phone)) errors.push('Phone must be a valid Irish mobile number (e.g. 0871234567 or +353871234567).');
+
+            //Let browser HTML5 checks still surface default messages when appropriate
+            if (!form.checkValidity()) {
+                //Add a compact message in addition to browser hints
+                if (errors.length === 0) {
+                    errors.push('Please fix the highlighted fields (HTML5 validation).');
+                }
+            }
+
+            if (errors.length) {
+                e.preventDefault();
+                clientErrors.innerHTML = errors.map(s => `<div>• ${s}</div>`).join('');
+                //For accessibility: focus first invalid input if possible
+                const firstInvalid = form.querySelector(':invalid') || null;
+                if (firstInvalid) firstInvalid.focus();
+            }
+        });
+
+        //Phone blur -> set custom validity for nicer browser tooltip
+        phoneInput.addEventListener('blur', () => {
+            const ok = isValidIrishMobile(phoneInput.value.trim());
+            phoneInput.setCustomValidity(ok ? '' : 'Invalid Irish mobile number');
+        });
+
+        //Optional: keep console logs for demo
+        form.addEventListener('input', () => {
+            console.log('Form validity (HTML5):', form.checkValidity());
+        });
+    })();
+</script>
+</body>
+</html>
