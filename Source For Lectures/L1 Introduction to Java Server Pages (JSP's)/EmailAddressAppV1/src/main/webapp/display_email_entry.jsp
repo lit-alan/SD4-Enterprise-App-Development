@@ -39,7 +39,7 @@
            button in your browser or the Return button shown <br>
            below. </p>
             
-        <form action="join_email_list.html" method="post">
+        <form action="index.html" method="post">
             <input type="submit" value="Return">
         </form>
 

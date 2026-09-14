@@ -11,7 +11,7 @@ and open the template in the editor.
 <body>
 <h1>Join Our Email List</h1>
 
-<p>To join our email list, enter your name and email address below, </p>
+<p>To join our email list, enter your name and email address below </p>
 
 <form action="display_email_entry.jsp" method="get">
     <table cellspacing="5" border="0">
