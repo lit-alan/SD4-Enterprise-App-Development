@@ -2,20 +2,31 @@
 
 ## 1. Create the Web Application
 
-Create a Web Application in IntelliJ, using Tomcat as the server. 
+Create a Web Application in IntelliJ, using Tomcat as the server. For example
 <br>
 
-> [!NOTE]
-> Download and setup Tomcat as instructed in last weeks lecture.
+
+
+
+|![image](https://github.com/user-attachments/assets/1b39f045-2807-462c-b4ab-f73b071d4cf8)|
+|:--------------------------------------------------------------------------------------:|
+|**Fig 1. Creating the Jakarta EE project.**|
+
+> [!IMPORTANT]
+> You can set up Tomcat at this point or later once the project has been created by adding a `new configuration` (as demonstrated in the lecture).
+<br>
+
+*Go with the default options on the next screen*
 
 <br>
 
-Add an `index.jsp` page to the project. One should be automatically added to the project when it is created.
+An `index.jsp` page should have been automatically added to the project when it was created. If not, create one.
+
 <br><br>
 ## 2. Create the Registration Form
 
 
-Remove all the code `index.jsp` page and replace it with the following:
+Remove all code from the generated `index.jsp` page and replace it with the following:
 
 ```html
 <html>
@@ -135,7 +146,7 @@ The form allows users to register their personal details with the site. And look
 
 |![image](https://github.com/user-attachments/assets/683d3a16-f02f-4175-8178-ec1a8fb41a10)|
 |:--------------------------------------------------------------------------------------:|
-| **Fig 1. Index page for the application.**|
+| **Fig 2. Index page for the application.**|
 
 
 
@@ -167,7 +178,7 @@ This page provides two buttons (implement them as links if you like).
 
 |![image](https://github.com/user-attachments/assets/cb32f960-af28-48f2-b4fc-0cbc96749220)|
 |:--------------------------------------------------------------------------------------:|
-|**Fig 3. Page to allow the user to view their details again.**|
+|**Fig 4. Page to allow the user to view their details again.**|
 
 <br><br>
 
@@ -180,7 +191,7 @@ However, it will be populated with the user's data. From there they can edit the
 
 |![image](https://github.com/user-attachments/assets/b37593d5-dd41-4661-b19c-e7c96f0eec86)|
 |:--------------------------------------------------------------------------------------:|
-|**Fig 4. Index page redisplayed with the user's original input.**|
+|**Fig 5. Index page redisplayed with the user's original input.**|
 
 <br><br>
 
@@ -192,7 +203,7 @@ If the user clicks on the second button, **Save Details**, from the **Details Co
 
 |![image](https://github.com/user-attachments/assets/79bc2970-354d-4fda-861b-1f99901b0f0a)|
 |:--------------------------------------------------------------------------------------:|
-|**Fig 5. Thanks Page.**|
+|**Fig 6. Thanks Page.**|
 
 <br><br>
 
@@ -206,6 +217,6 @@ Should the user click on this button, the index page will again be displayed, bu
 
 |![image](https://github.com/user-attachments/assets/1d297383-d054-4130-bf1a-e7c296e01a6a)|
 |:--------------------------------------------------------------------------------------:|
-|**Fig 6. Contents of the file after the user's details have been saved.**|
+|**Fig 7. Contents of the file after the user's details have been saved.**|
 
 
