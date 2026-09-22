@@ -1,4 +1,4 @@
-## Snippets for 'Introduction To Spring' Live Coding Session 22/9/2026x: :point_down:
+## Snippets for 'Introduction To Spring' Live Coding Session 22/9/2026: :point_down:
 
 1. [Controller Method With Path Params](#controller-method-with-path-params)
 
