@@ -1,4 +1,4 @@
-## Lab Exercise Three. Week Three. 🙂
+## Lab Exercise Three. Week 3️⃣.
 
 <br>
 
