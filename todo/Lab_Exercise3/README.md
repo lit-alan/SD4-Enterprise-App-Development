@@ -945,7 +945,7 @@ _(you will be required you to make calls to the appropriate methods in the servi
   ![image](https://github.com/user-attachments/assets/37a20826-cccd-4d3b-b634-1333a6a600e8)
 
 
-
+[The Lecture on Thymeleaf should be a useful guide here](https://lit-main-mdl-euwest1.s3.eu-west-1.amazonaws.com/da/8c/da8c3de4e32058f1225265aee054e9ecce9f4d0e?response-content-disposition=inline%3B%20filename%3D%22L7%20Thymeleaf.pdf%22&response-content-type=application%2Fpdf&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWRN6GJFLXROXF4PK%2F20260924%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20260924T112917Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3583&X-Amz-Signature=df266e71d34f660bb14ef1da854e83ea808e0f6084fb33e17aaf32f84e98342c)
 
 <br>
 
