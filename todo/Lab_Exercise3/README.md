@@ -702,7 +702,7 @@ _We’re using a custom repository with `EntityManager` for learning purposes no
  * In time we will refactor this repository to use JpaRepository instead
  */
  
- import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -932,6 +932,10 @@ For the time being, check the console and observe the output
     
 _(you will be required you to make calls to the appropriate methods in the service class for task 12)._
 
+> [!WARNING]
+> If you attempt to delete a customer who has one or more existing reviews, the deletion will not be permitted because the `reviews` table has a foreign key constraint referencing that customer. In other words,
+> **a customer cannot be deleted while reviews associated with that customer exist**. To test the delete functionality, either delete a customer who has no associated reviews or insert a dummy customer record
+> specifically for deletion.
 
 <br>
 
