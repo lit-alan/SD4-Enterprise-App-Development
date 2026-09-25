@@ -742,6 +742,8 @@ public class CustomerRepository {
             entityManager.remove(entityManager.merge(customer));
         }
     }
+
+  
 }
 
 ```
@@ -782,6 +784,10 @@ public class CustomerService {
 
     public void deleteCustomer(Customer customer) {
         customerRepository.delete(customer);
+    }
+
+   public Customer updateCustomer(Customer customer) {
+        return customerRepository.save(customer);
     }
 }
 
@@ -916,16 +922,20 @@ For the time being, check the console and observe the output
 <br>
 
 ### 12. Add Remaining CRUD Operations/endpoints to the controller.
-- Delete a customer by ID. (hint use `GetMapping`)
+
+
+Use a `GetMaping` for the following three endpoints. This makes it easier to test them through the browser. Ideally the `Add` and `Update` would have a `PostMapping`. <br>
+
+- Delete a customer by ID. (Hint: use @GetMapping("/delete/{customerId}") and retrieve the customerId using @PathVariable.)
   * The customer ID should be passed through the URL.
   * Example: /customers/delete/123 should delete the customer with ID 123.
     
-- Add a customer. (hint use `PosMapping`)
+- Add a customer (Hint: use @GetMapping("/add") as the mapping in the controller.)
   * Create a controller method that adds a customer.
   * For now, you can hard-code the customer data inside the method (no form or request body needed yet).
  
  
-- Update a customer  (hint use `PosMapping`)
+- Update a customer. (Hint: use @GetMapping("/update/{customerId}") as the mapping in the controller.)
   * Create a controller method that looks up a customer by ID (passed through the URL).
   * Update one or more fields of that customer (hard-code the new values in the method).
   * Save the updated customer back to the database.
