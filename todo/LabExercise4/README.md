@@ -1,7 +1,7 @@
 ## Lab Exercise Four. Week 3️⃣:
 
 
-### You must have completed [Lab Ex 2](Lab_Ex_Two.md) before attemtping this exercise.  
+### You must have completed [Lab Exercise 3](../Lab_Exercise3/README.md) before attempting this exercise.  
 
 
   <br>
@@ -22,7 +22,7 @@ _`JpaRepository` in Spring Data is a generic interface that provides basic CRUD 
 
 <br>
 
-### 2. Amend the 'displayAllCustomers' Feature from Lab Ex 2.
+### 2. Amend the 'displayAllCustomers' Feature from Lab Ex 3.
 
 ![image](https://github.com/user-attachments/assets/b7efe0e3-6c70-4a56-9226-3e71604db5ab)
 
