@@ -1,7 +1,7 @@
 ## Lab Exercise Four. Week 3️⃣:
 
 
-### You must have completed [Lab Exercise 3](../Lab_Exercise3/README.md) before attempting this exercise.  
+### You must have completed [Lab Exercise 3](../Lab_Exercise_3/README.md) before attempting this exercise.  
 
 
   <br>
