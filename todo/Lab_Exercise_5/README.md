@@ -1,6 +1,6 @@
 ## Lab Exercise Five. Week :four:
 
-### You must have completed [Lab Ex 4](../LabExercise4/README.md)  before attemtping this exercise.  
+### You must have completed [Lab Exercise 4](../Lab_Exercise_4/README.md)  before attemtping this exercise.  
 
 
 ### Amend the 'displayAllCustomers' Feature from Lab Ex 3.
