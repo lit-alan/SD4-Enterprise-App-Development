@@ -23,8 +23,10 @@ The delete link will generate a GET request, which you must handle in your `Cust
  *                           including flash attributes for success messages.
  * @return A String representing the name of the view to redirect to after deletion.
  */
+@GetMapping("/delete/{id}")
 public String deleteCustomer(@PathVariable("id") Integer id, RedirectAttributes redirectAttributes) {
         // Your implementation goes here
+        //you can use RedirectAttributes to pass data when redirecting from one controller method to another, particularly success/error messages.
 }
 
 ```
