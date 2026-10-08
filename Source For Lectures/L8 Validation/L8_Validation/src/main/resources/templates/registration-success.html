@@ -1,0 +1,71 @@
+<html>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<link rel="stylesheet" th:href="@{/assets/css/style.css}">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Successful</title>
+
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Registration Successful</h1>
+
+    <p class="message">
+        The registration form was successfully submitted.
+    </p>
+
+    <div class="details">
+
+        <div class="row">
+            <div class="label">Name:</div>
+            <div class="value" th:text="${studentRegistration.name}"></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Email:</div>
+            <div class="value" th:text="${studentRegistration.email}"></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Age:</div>
+            <div class="value" th:text="${studentRegistration.age}"></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Student ID:</div>
+            <div class="value" th:text="${studentRegistration.studentId}"></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Course:</div>
+            <div class="value" th:text="${studentRegistration.course}"></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Password:</div>
+            <div class="value" th:text="${studentRegistration.password}"></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Confirmation:</div>
+            <div class="value" th:text="${studentRegistration.confirmPassword}"></div>
+        </div>
+
+    </div>
+
+    <a th:href="@{/students/register}" class="button">
+        Register Another Student
+    </a>
+
+</div>
+
+</body>
+</html>
+```

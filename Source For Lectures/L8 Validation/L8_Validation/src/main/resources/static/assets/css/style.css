@@ -1,0 +1,146 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f8;
+    color: #333;
+}
+
+.container {
+    width: 650px;
+    max-width: 90%;
+    margin: 60px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+h1.success {
+    color: #27ae60;
+}
+
+.password-section h2 {
+    font-size: 18px;
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+
+/* Registration form */
+
+.intro {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 7px;
+    color: #444;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    font-size: 15px;
+    background: white;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.15);
+}
+
+.help {
+    display: block;
+    margin-top: 5px;
+    font-size: 13px;
+    color: #777;
+}
+
+.password-section {
+    border-top: 1px solid #ddd;
+    margin-top: 30px;
+    padding-top: 25px;
+}
+
+
+/* Buttons */
+
+button,
+.button {
+    display: inline-block;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    background: #3498db;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+button:hover,
+.button:hover {
+    background: #2980b9;
+}
+
+
+/* Registration success page */
+
+.message {
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.details {
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.row {
+    display: flex;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.label {
+    width: 150px;
+    font-weight: bold;
+}
+
+.value {
+    flex: 1;
+}
+
+.details .button {
+    margin-top: 30px;
+}

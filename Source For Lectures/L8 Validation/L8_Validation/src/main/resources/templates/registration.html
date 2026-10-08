@@ -1,0 +1,246 @@
+<html>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<link rel="stylesheet" th:href="@{/assets/css/style.css}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Student Registration</title>
+
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Student Registration</h1>
+
+    <p class="intro">
+        Please complete the form below to register as a student.
+    </p>
+
+    <form th:action="@{/students/register}"
+          th:object="${studentRegistration}"
+          method="post"
+          id="registrationForm">
+
+        <!-- Name -->
+        <div class="form-group">
+
+            <label for="name">Full Name</label>
+
+            <input type="text"
+                   id="name"
+                   th:field="*{name}"
+                   required
+                   minlength="3"
+                   maxlength="50"
+                   pattern="[A-Za-z ]+"
+                   title="Name must contain letters and spaces only">
+
+            <span class="help">
+                Enter your full name.
+            </span>
+
+        </div>
+
+
+        <!-- Email -->
+        <div class="form-group">
+
+            <label for="email">Email Address</label>
+
+            <input type="email"
+                   id="email"
+                   th:field="*{email}"
+                   required>
+
+            <span class="help">
+                Enter a valid email address.
+            </span>
+
+        </div>
+
+
+        <!-- Age -->
+        <div class="form-group">
+
+            <label for="age">Age</label>
+
+            <input type="number"
+                   id="age"
+                   th:field="*{age}"
+                   required
+                   min="18"
+                   max="100">
+
+            <span class="help">
+                You must be between 18 and 100 years old.
+            </span>
+
+        </div>
+
+
+        <!-- Student ID -->
+        <div class="form-group">
+
+            <label for="studentId">Student ID</label>
+
+            <input type="text"
+                   id="studentId"
+                   th:field="*{studentId}"
+                   required
+                   pattern="[A-Z]{2}[0-9]{6}"
+                   title="Two uppercase letters followed by six digits">
+
+            <span class="help">
+                Format: AB123456
+            </span>
+
+        </div>
+
+
+        <!-- Course -->
+        <div class="form-group">
+
+            <label for="course">Course</label>
+
+            <select id="course"
+                    th:field="*{course}"
+                    required>
+
+                <option value="">-- Select a course --</option>
+
+                <option value="Computing">
+                    Computing
+                </option>
+
+                <option value="Software Development">
+                    Software Development
+                </option>
+
+                <option value="Cybersecurity">
+                    Cybersecurity
+                </option>
+
+                <option value="Data Analytics">
+                    Data Analytics
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- Password section -->
+        <div class="password-section">
+
+            <h2>Account Security</h2>
+
+
+            <!-- Password -->
+            <div class="form-group">
+
+                <label for="password">Password</label>
+
+                <input type="password"
+                       id="password"
+                       th:field="*{password}"
+                       required
+                       minlength="12"
+                       maxlength="50"
+                       pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*]).{12,}"
+                       title="Password must contain uppercase, lowercase, number and special character">
+
+                <span class="help">
+                    At least 12 characters, including uppercase,
+                    lowercase, number and special character.
+                </span>
+
+            </div>
+
+
+            <!-- Confirm password -->
+            <div class="form-group">
+
+                <label for="confirmPassword">
+                    Confirm Password
+                </label>
+
+                <input type="password"
+                       id="confirmPassword"
+                       th:field="*{confirmPassword}"
+                       required>
+
+                <span class="help">
+                    Re-enter your password to confirm it.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <button type="submit">
+            Register
+        </button>
+
+    </form>
+
+</div>
+
+
+<script>
+
+    const form = document.getElementById("registrationForm");
+
+    form.addEventListener("submit", function(event) {
+
+        const password =
+            document.getElementById("password").value;
+
+        const confirmPassword =
+            document.getElementById("confirmPassword").value;
+
+
+        /*
+         * Client-side password confirmation.
+         */
+        if (password !== confirmPassword) {
+
+            alert("The passwords do not match.");
+
+            event.preventDefault();
+
+            return;
+        }
+
+
+        /*
+         * Additional client-side password validation.
+         */
+        const passwordPattern =
+            /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*]).{12,}$/;
+
+        if (!passwordPattern.test(password)) {
+
+            alert(
+                "Password must contain at least 12 characters, " +
+                "including uppercase, lowercase, number and special character."
+            );
+
+            event.preventDefault();
+
+            return;
+        }
+
+    });
+
+</script>
+
+</body>
+</html>
+```
