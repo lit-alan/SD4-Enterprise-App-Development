@@ -8,6 +8,8 @@ import jakarta.validation.constraints.*;
 import lombok.*;
 import org.hibernate.validator.constraints.ISBN;
 import org.springframework.format.annotation.DateTimeFormat;
+import sd4.com.application.validators.isbn_and_date.ValidIsbnForPublicationDate;
+
 
 import java.util.Date;
 
@@ -20,6 +22,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@ValidIsbnForPublicationDate
 @Entity
 public class Book {
 
@@ -42,11 +45,12 @@ public class Book {
     private Double price;
 
     @NotBlank(message="ISBN cannot be null")
-    @ISBN(type = ISBN.Type.ISBN_13)
+    //@ISBN(type = ISBN.Type.ISBN_10)
+    @ISBN(type = ISBN.Type.ISBN_13) //can't combine the requirement to support both ISBN 10 and ISBN 13
+    //@ValidISBN(message = "The provided ISBN is invalid. Please enter a valid ISBN-10 or ISBN-13.")
     private String isbn;
 
     private long authorID;
-
 }
 
 

@@ -1,11 +1,11 @@
 package sd4.com.application;
 
 import com.github.javafaker.Faker;
-import sd4.com.application.model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import sd4.com.application.model.Book;
 import sd4.com.application.service.BookService;
 
 import java.util.Calendar;

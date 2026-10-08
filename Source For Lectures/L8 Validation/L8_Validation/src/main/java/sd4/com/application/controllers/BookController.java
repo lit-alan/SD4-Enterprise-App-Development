@@ -1,42 +1,121 @@
 package sd4.com.application.controllers;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.ui.Model;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import sd4.com.application.model.Book;
 import sd4.com.application.service.BookService;
 
-import java.util.HashMap;
-import java.util.Map;
-
-@RestController
-@RequestMapping("/books")
+/**
+ *
+ * @author Alan.Ryan
+ */
+@Controller
+@RequestMapping(value = {"/book", "/book/"})
 public class BookController {
 
     @Autowired
     private BookService bookService;
 
+    @GetMapping("")
+    public String listBooks(Model model, @RequestParam(defaultValue = "0") int page,
+                            @RequestParam(defaultValue = "5") int size) {
 
-    @PostMapping("")
-    public ResponseEntity add(@Valid @RequestBody Book b) {
-        bookService.saveBook(b);
-        return ResponseEntity.ok("Book entity is valid and has been added");
+        Pageable pageable = PageRequest.of(page, size, Sort.by("title").ascending());
+        Page<Book> bookPage = bookService.findAll(pageable);
+
+        model.addAttribute("books", bookService.findAll());
+        return "book-list";
     }
 
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Map<String, String> handleValidationExceptions(
-            MethodArgumentNotValidException ex) {
-        Map<String, String> errors = new HashMap<>();
-        ex.getBindingResult().getAllErrors().forEach((error) -> {
-            String fieldName = ((FieldError) error).getField();
-            String errorMessage = error.getDefaultMessage();
-            errors.put(fieldName, errorMessage);
-        });
-        return errors;
+
+
+    @RequestMapping("")
+    public ModelAndView displayAllBooks() {
+        return new ModelAndView("book-list", "books", bookService.findAll());
+    }
+
+
+    //////////////////
+    @GetMapping("/add")
+    public ModelAndView showAddBookForm() {
+        return new ModelAndView("/addBook", "aBook", new Book());
+
+    }
+
+
+    @PostMapping("/addBook")
+    public ModelAndView addABook(@Valid @ModelAttribute("aBook") Book b, BindingResult result) {
+        if (result.hasErrors())
+            return new ModelAndView("/addBook");
+
+       bookService.saveBook(b); // Save new book
+       return new ModelAndView("redirect:/book/");
+
+    }
+
+    //////////////////
+
+    @GetMapping("/edit/{id}")
+    public ModelAndView showEditBookForm(@PathVariable("id") long id) {
+        if (bookService.findOne(id).isEmpty())
+            return new ModelAndView("/error", "error", "Book not found");
+        else
+            return new ModelAndView("/editBook", "aBook", bookService.findOne(id).get());
+    }
+
+    @PostMapping("/editBook")
+    public ModelAndView updateABook(@Valid @ModelAttribute("aBook") Book b, BindingResult result) {
+
+
+        if (result.hasErrors())
+            return new ModelAndView("/editBook");
+
+        bookService.updateBook(b);
+        return new ModelAndView("redirect:/book");
+    }
+
+   /* The addABook and updateABook methods above can be combined into one method.
+      The method below first of all checks if there are any validation errors. If there are, determine the appropriate
+      view to return (addBook or editBook) based on whether the book's ID is null.
+      If there are no errors, check if the book's ID is null. If it is, you treat it as a new book and call saveBook.
+      If the ID is not null, treat it as an existing book and call updateBook.
+      After either saving or updating the book, redirect to the /book
+    */
+    @PostMapping("/saveBook")
+    public ModelAndView saveOrUpdateBook(@Valid @ModelAttribute("aBook") Book b, BindingResult result) {
+     if (result.hasErrors()) {
+            // Determine whether it's an add or update operation based on book ID
+            String viewName = (b.getBookId() == null) ? "/addBook" : "/editBook";
+            return new ModelAndView(viewName);
+        }
+
+        if (b.getBookId() == null) {
+            bookService.saveBook(b); // Save new book
+        } else {
+            bookService.updateBook(b); // Update existing book
+        }
+
+        return new ModelAndView("redirect:/book");
+    }
+
+    //////////////////
+    @GetMapping("/delete/{id}")
+    public ModelAndView deleteBook(@PathVariable("id") long id) {
+         if (bookService.findOne(id).isEmpty()) {
+             return new ModelAndView("/error", "error", "Book not found");
+         }
+        else {
+            bookService.deleteByID(id);
+            return new ModelAndView("redirect:/book/");
+         }
     }
 }
