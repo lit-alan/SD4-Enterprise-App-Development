@@ -144,3 +144,11 @@ button:hover,
 .details .button {
     margin-top: 30px;
 }
+
+.error-message {
+    display: block;
+    margin-top: 5px;
+    color: #d32f2f;
+    font-size: 13px;
+    font-weight: bold;
+}

@@ -1,15 +1,13 @@
-<html>
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
-
-<link rel="stylesheet" th:href="@{/assets/css/style.css}">
 
 <head>
     <meta charset="UTF-8">
     <title>Student Registration</title>
 
-
+    <link rel="stylesheet"
+          th:href="@{/assets/css/style.css}">
 </head>
 
 <body>
@@ -26,6 +24,7 @@
           th:object="${studentRegistration}"
           method="post"
           id="registrationForm">
+
 
         <!-- Name -->
         <div class="form-group">
@@ -45,6 +44,10 @@
                 Enter your full name.
             </span>
 
+            <span class="error-message"
+                  th:errors="*{name}">
+            </span>
+
         </div>
 
 
@@ -60,6 +63,10 @@
 
             <span class="help">
                 Enter a valid email address.
+            </span>
+
+            <span class="error-message"
+                  th:errors="*{email}">
             </span>
 
         </div>
@@ -81,6 +88,10 @@
                 You must be between 18 and 100 years old.
             </span>
 
+            <span class="error-message"
+                  th:errors="*{age}">
+            </span>
+
         </div>
 
 
@@ -98,6 +109,10 @@
 
             <span class="help">
                 Format: AB123456
+            </span>
+
+            <span class="error-message"
+                  th:errors="*{studentId}">
             </span>
 
         </div>
@@ -132,6 +147,10 @@
 
             </select>
 
+            <span class="error-message"
+                  th:errors="*{course}">
+            </span>
+
         </div>
 
 
@@ -160,6 +179,10 @@
                     lowercase, number and special character.
                 </span>
 
+                <span class="error-message"
+                      th:errors="*{password}">
+                </span>
+
             </div>
 
 
@@ -177,6 +200,10 @@
 
                 <span class="help">
                     Re-enter your password to confirm it.
+                </span>
+
+                <span class="error-message"
+                      th:errors="*{confirmPassword}">
                 </span>
 
             </div>
@@ -243,4 +270,3 @@
 
 </body>
 </html>
-```
