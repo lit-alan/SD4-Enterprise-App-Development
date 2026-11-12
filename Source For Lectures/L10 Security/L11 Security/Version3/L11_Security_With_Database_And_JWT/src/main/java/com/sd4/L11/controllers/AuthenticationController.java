@@ -46,6 +46,7 @@ public class AuthenticationController {
 
         final String jwt = jwtTokenUtil.generateToken(userDetails.getUsername());
 
-        return ResponseEntity.ok().header("Alans Custom Header", "blah blah").body(new AuthenticationResponse(jwt));
+
+        return ResponseEntity.ok().body(new AuthenticationResponse(jwt));
     }
 }
