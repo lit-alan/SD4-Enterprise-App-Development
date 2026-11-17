@@ -51,7 +51,7 @@ public class WebSecurityConfig {
     //and BCrypt password encoding.
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
-        return http.getSharedObject(AuthenticationManagerBuilder.class) //Spring internally uses this to set up authentication mechanisms.
+        return http.getSharedObject(AuthenticationManagerBuilder.class)//Spring internally uses this to set up authentication mechanisms.
                 .userDetailsService(customerService)
                 .passwordEncoder(encoder())
                 .and()

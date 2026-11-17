@@ -21,4 +21,3 @@ public class PasswordHashingController {
 }
 
 
-eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhb2lmZV9tdXJwaHk3OEBnbWFpbC5jb20iLCJpYXQiOjE3NjI0NDM2MTcsImV4cCI6MTc2MjQ3OTYxN30.M7q3O-4ED1-ZDvoT2CwAbuDED1kNPg9VJQull7JICIU

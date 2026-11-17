@@ -83,6 +83,7 @@ public class JwtUtil {
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis()
                         + 1000 * 60 * 60 * 10)) //10 hours
+//                        + 1000 * 20)) //10 hours
                 .signWith(getSigningKey())
                 .compact();
     }
