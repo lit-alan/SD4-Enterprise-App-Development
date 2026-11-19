@@ -14,6 +14,7 @@ public class LoggingFilter implements Filter {
     //Cache duration in seconds (e.g., 3600 seconds = 1 hour)
     private static final int CACHE_DURATION_IN_SECONDS = 3600;
 
+
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
@@ -83,7 +84,6 @@ public class LoggingFilter implements Filter {
             else 
                 return "Unknown";
     }
-
 
 
     @Override

@@ -61,10 +61,11 @@ public class IPRestrictionFilter implements Filter {
             //If IP is not allowed, log and reject the request
             System.out.println("Unauthorised access attempt from IP: " + remoteAddress);
 
-         //   httpResponse.sendError(HttpServletResponse.SC_FORBIDDEN, "Access denied");
+            httpResponse.sendError(HttpServletResponse.SC_FORBIDDEN, "Access denied");
 
             //Consider returning a 404 Not Found error instead or a 403 as a bit of misdirection.
-            httpResponse.sendError(HttpServletResponse.SC_NOT_FOUND, "Resource Could Not Be Found");
+            //httpResponse.sendError(HttpServletResponse.SC_NOT_FOUND, "Resource Could Not Be Found");
+
 
         }
     }

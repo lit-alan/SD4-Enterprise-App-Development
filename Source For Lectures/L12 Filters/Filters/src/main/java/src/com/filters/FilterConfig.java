@@ -10,6 +10,7 @@ import java.util.EnumSet;
 
 
 @Configuration
+//@Order(2)
 public class FilterConfig {
 
     //Define the filter as a Spring Bean

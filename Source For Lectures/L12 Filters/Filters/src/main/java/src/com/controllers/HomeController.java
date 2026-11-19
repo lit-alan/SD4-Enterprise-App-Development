@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HomeController {
 
-    @GetMapping("/route1")
+    @GetMapping("/ ")
     @ResponseBody
     public String route1() {
         System.out.println("route1");
